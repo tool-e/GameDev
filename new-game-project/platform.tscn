@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cugbu4w0rbbx5"]
+
+[ext_resource type="Texture2D" uid="uid://xyd8e3g2w2o3" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Props/platform-long.png" id="1_mi635"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi635"]
+size = Vector2(70, 8)
+
+[node name="Platform" type="StaticBody2D" unique_id=2040962621]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=430600029]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(2.1875, 1)
+texture = ExtResource("1_mi635")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1881916166]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mi635")
