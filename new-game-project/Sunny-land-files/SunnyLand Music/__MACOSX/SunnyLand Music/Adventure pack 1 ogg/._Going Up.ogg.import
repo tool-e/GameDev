@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://rodwotl1v7xi"
+valid=false
+
+[deps]
+
+source_file="res://Sunny-land-files/SunnyLand Music/__MACOSX/SunnyLand Music/Adventure pack 1 ogg/._Going Up.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
