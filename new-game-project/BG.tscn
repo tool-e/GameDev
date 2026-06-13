@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b8qwk3o424vbh"]
+
+[ext_resource type="Script" uid="uid://cv2bpyiuf8dv1" path="res://bg.gd" id="1_7r6q2"]
+[ext_resource type="Texture2D" uid="uid://b6g7tbob3apyh" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/back.png" id="1_vcwcu"]
+[ext_resource type="Texture2D" uid="uid://d0mfuplqwh3q3" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/middle.png" id="2_7r6q2"]
+
+[node name="BG" type="ParallaxBackground" unique_id=823315618]
+script = ExtResource("1_7r6q2")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="." unique_id=75383886]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Back" type="Sprite2D" parent="ParallaxLayer" unique_id=527502080]
+position = Vector2(575.99994, 324)
+scale = Vector2(3, 2.7)
+texture = ExtResource("1_vcwcu")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="." unique_id=1502237441]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1225, 0)
+
+[node name="Middle" type="Sprite2D" parent="ParallaxLayer2" unique_id=1390522562]
+position = Vector2(88, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle2" type="Sprite2D" parent="ParallaxLayer2" unique_id=1238235188]
+position = Vector2(264, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle3" type="Sprite2D" parent="ParallaxLayer2" unique_id=877849332]
+position = Vector2(440, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle4" type="Sprite2D" parent="ParallaxLayer2" unique_id=2085073166]
+position = Vector2(616, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle5" type="Sprite2D" parent="ParallaxLayer2" unique_id=862051337]
+position = Vector2(792, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle6" type="Sprite2D" parent="ParallaxLayer2" unique_id=163567799]
+position = Vector2(968, 464)
+texture = ExtResource("2_7r6q2")
+
+[node name="Middle7" type="Sprite2D" parent="ParallaxLayer2" unique_id=18533989]
+position = Vector2(1144, 464)
+texture = ExtResource("2_7r6q2")
