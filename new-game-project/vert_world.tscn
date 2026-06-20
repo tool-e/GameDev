@@ -143,6 +143,7 @@ sources/0 = SubResource("TileSetAtlasSource_n7rix")
 
 [node name="VertWorld" type="Node2D" unique_id=447647079]
 script = ExtResource("1_n7rix")
+scene_to_instantiate = ExtResource("4_hp7us")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1966043117]
 tile_set = SubResource("TileSet_y5ot6")
@@ -161,15 +162,20 @@ motion_mirroring = Vector2(560, 800)
 offset_right = 1148.0
 offset_bottom = 813.0
 texture = ExtResource("3_hp7us")
+expand_mode = 3
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="Platform" parent="." unique_id=2040962621 instance=ExtResource("4_hp7us")]
-position = Vector2(173, 198)
+position = Vector2(-87, -95)
 
 [node name="Platform2" parent="." unique_id=1271410189 instance=ExtResource("4_hp7us")]
-position = Vector2(173, 115)
+position = Vector2(-3, 42)
+
+[node name="Platform2" parent="Platform2" unique_id=1752958568 instance=ExtResource("4_hp7us")]
+position = Vector2(144, -76)
 
 [node name="PLAYER" type="Node2D" parent="." unique_id=138488794]
 
 [node name="Player" parent="PLAYER" unique_id=990092504 instance=ExtResource("5_n7rix")]
-position = Vector2(174, 153)
+position = Vector2(0, -1)
