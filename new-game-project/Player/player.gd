@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
+const JUMP_VELOCITY = -1500
 
 @onready var anim = $AnimationPlayer
 @onready var anime = $AnimatedSprite2D
