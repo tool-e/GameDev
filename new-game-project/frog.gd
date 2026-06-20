@@ -1,14 +1,34 @@
 extends CharacterBody2D
 
+var SPEED = 300
+var PRECONDITIONS = {
+	'player_highground': false,
+	'platform_overhead': false,
+}
 
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
 
 
-var Player
-var SPEED = 50
-var chase
+@onready var ray_cast = $RayCast2D
+var sweep_speed: float = 2.0
+var sweep_time: float = 0.0
 
+								#ACTION STATES
+func CHASE(SPEED: int) -> void:
+	get_node("AnimatedSprite2D").play("Jump")
+	var Player = get_node("../../PLAYER/Player")
+	var direction = (Player.position - self.position).normalized()
+	var speed = 300
+	
+	if direction.x > 0:
+		get_node("AnimatedSprite2D").flip_h = true
+	else:
+		get_node("AnimatedSprite2D").flip_h = false
+		
+	velocity.x = direction.x * speed 
+		
+	move_and_slide()
+	
+								#PROCESS
 func _ready() -> void:
 	get_node("AnimatedSprite2D").play("Idle")
 	
@@ -16,47 +36,26 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	CHASE(SPEED)
+	# Sweep the raycast back and forth using a sine wave
+	sweep_time += delta * sweep_speed
+	
+	# Rotate the RayCast around its local origin
+	ray_cast.rotation = sin(sweep_time) * deg_to_rad(45) # Sweeps a 90-degree arc
+	
+	if ray_cast.is_colliding():
+		var hit_object = ray_cast.get_collider()
+		var hit_point = ray_cast.get_collision_point()
+		print("Swept and hit: ", hit_object.name)
+		print(hit_point)
 		
-	if chase == true:
-		if get_node("AnimatedSprite2D").animation != "Death": get_node("AnimatedSprite2D").play("Jump")
-		Player = get_node("../../PLAYER/Player")
-		var direction = (Player.position - self.position).normalized()
-		if direction.x > 0:
-			get_node("AnimatedSprite2D").flip_h = true
-		else:
-			get_node("AnimatedSprite2D").flip_h = false
-			
-		velocity.x = direction.x * SPEED
-	else:
-		if get_node("AnimatedSprite2D").animation != "Death": 
-			get_node("AnimatedSprite2D").play("Idle")
-		velocity.x = 0
-		
-	move_and_slide()
+		if hit_object.name == "Player":
+			velocity.y = Game.JUMP_VELOCITY
 
-
-func _on_player_detection_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		chase = true
-
-func _on_player_detection_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_index: int,  _local_shape_index: int) -> void:
-	if body.name == "Player":
-		chase = false
-
-func death():	
-	chase = false
-	get_node("AnimatedSprite2D").play("Death")
-	await get_node("AnimatedSprite2D").animation_finished
-	self.queue_free()
-		
-func _on_player_death_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		Game.GOLD += 1
-		death()
-		Utils.SaveGame()
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		Game.playerHP -= 3
 		Utils.SaveGame()
-		death()
+		
