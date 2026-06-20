@@ -1,5 +1,9 @@
 extends Node
 
 
-var playerHP = 10
-var GOLD = 0
+
+
+const JUMP_VELOCITY = -400.0
+
+var GOLD: int = 0
+var playerHP: int = 10
