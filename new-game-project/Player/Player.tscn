@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b2j0kl1bumtr4" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-4.png" id="12_yifbt"]
 [ext_resource type="Texture2D" uid="uid://cul0vnctpmdnk" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-5.png" id="13_s0mko"]
 [ext_resource type="Texture2D" uid="uid://ddo77aqoe35mv" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-6.png" id="14_hqjia"]
+[ext_resource type="Script" uid="uid://cbql83hsw2ey" path="res://Player/base_state.gd" id="15_7v5gs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x70vp"]
 height = 22.0
@@ -269,3 +270,7 @@ limit_right = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1582730537]
 libraries/ = SubResource("AnimationLibrary_d7xyo")
+
+[node name="BaseState" type="CharacterBody2D" parent="." unique_id=1900786139]
+unique_name_in_owner = true
+script = ExtResource("15_7v5gs")

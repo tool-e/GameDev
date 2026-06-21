@@ -13,10 +13,10 @@ var sweep_speed: float = 2.0
 var sweep_time: float = 0.0
 
 								#ACTION STATES
-func CHASE(SPEED: int) -> void:
+func CHASE() -> void:
 	get_node("AnimatedSprite2D").play("Jump")
-	var Player = get_node("../../PLAYER/Player")
-	var direction = (Player.position - self.position).normalized()
+	var player = get_node("../../PLAYER/Player")
+	var direction = (player.position - self.position).normalized()
 	var speed = 300
 	
 	if direction.x > 0:
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	CHASE(SPEED)
+	CHASE()
 	# Sweep the raycast back and forth using a sine wave
 	sweep_time += delta * sweep_speed
 	

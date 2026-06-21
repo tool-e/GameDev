@@ -1,20 +1,50 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -1500
+const SPEED = 200.0
 
-@onready var anim = $AnimationPlayer
-@onready var anime = $AnimatedSprite2D
 
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var anime: AnimatedSprite2D = $AnimatedSprite2D
+
+#Handle direction and which way player looks	
+var direction := Input.get_axis("ui_left", "ui_right")
+func MOVE() -> void:
+	if direction == -1: anime.flip_h = true
+	elif direction == 1: anime.flip_h = false
+	self.velocity.x = direction * SPEED
+	 
+
+#States the player can be in at any given time
+func RUN() -> void:
+	if direction == -1: anime.flip_h = true
+	elif direction == 1: anime.flip_h = false
+	velocity.x = direction * SPEED
+	anim.play("Run")
+
+func IDLE() -> void:
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+	anim.play("Idle")
+
+func JUMP() -> void:
+	MOVE()
+	velocity.y = Game.JUMP_VELOCITY
+	anim.play("Jump")
+	
+func FALL() -> void:
+	MOVE()
+	anim.play("Fall")
+
+var curr_state
 enum States {
 	IDLE,
 	RUN,
 	JUMP,
-	FALL
+	FALL,
+	AIR_STRAFE
 }
-var curr_state = States.IDLE	
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,30 +53,34 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction: 
+	if direction:
 		curr_state = States.RUN
-	else:
+	elif is_on_floor():
 		curr_state = States.IDLE
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor(): curr_state = States.JUMP
 	if velocity.y > 0: curr_state = States.FALL
 	
 	
 	match curr_state:
-		States.JUMP:
-			velocity.y = Game.JUMP_VELOCITY
-			anim.play("Jump")
-		States.FALL:
-			anim.play("Fall")
+		#States.JUMP:
+			#BaseState.JUMP()
+		#States.FALL:
+			#BaseState.FALL()
 		States.RUN:
-			if direction == -1: anime.flip_h = true
-			elif direction == 1: anime.flip_h = false
-			velocity.x = direction * SPEED
-			anim.play("Run")
+			RUN()
+			#if direction == -1: anime.flip_h = true
+			#elif direction == 1: anime.flip_h = false
+			#self.velocity.x = direction * SPEED
+			#anim.play("Run")
+		#States.AIR_STRAFE:
+			#if direction == -1: anime.flip_h = true
+			#elif direction == 1: anime.flip_h = false
+			#velocity.x = direction * SPEED
 		States.IDLE:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			anim.play("Idle")
+			IDLE()
 	
 	move_and_slide()	
+	print(velocity.x)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
