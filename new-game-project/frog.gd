@@ -47,8 +47,8 @@ func _physics_process(delta: float) -> void:
 	if ray_cast.is_colliding():
 		var hit_object = ray_cast.get_collider()
 		var hit_point = ray_cast.get_collision_point()
-		print("Swept and hit: ", hit_object.name)
-		print(hit_point)
+		#print("Swept and hit: ", hit_object.name)
+		#print(hit_point)
 		
 		if hit_object.name == "Player":
 			velocity.y = Game.JUMP_VELOCITY

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yr154luijgc2"]
 
 [ext_resource type="Texture2D" uid="uid://b6ekmryk32tiw" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/tileset.png" id="1_m7ouy"]
-[ext_resource type="Script" path="res://vert_world.gd" id="1_n7rix"]
+[ext_resource type="Script" uid="uid://dnjabh8mvfdcb" path="res://vert_world.gd" id="1_n7rix"]
 [ext_resource type="Script" uid="uid://cv2bpyiuf8dv1" path="res://bg.gd" id="2_mnpa7"]
 [ext_resource type="Texture2D" uid="uid://b6g7tbob3apyh" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/back.png" id="3_hp7us"]
 [ext_resource type="PackedScene" uid="uid://cugbu4w0rbbx5" path="res://platform.tscn" id="4_hp7us"]
@@ -179,7 +179,7 @@ position = Vector2(144, -76)
 [node name="PLAYER" type="Node2D" parent="." unique_id=138488794]
 
 [node name="Player" parent="PLAYER" unique_id=990092504 instance=ExtResource("5_n7rix")]
-position = Vector2(0, -1)
+position = Vector2(2, 2)
 
 [node name="MOBS" type="Node2D" parent="." unique_id=361904289]
 
