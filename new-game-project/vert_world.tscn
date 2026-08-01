@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bybtlc5qen6ob"]
+[gd_scene format=3 uid="uid://yr154luijgc2"]
 
 [ext_resource type="Texture2D" uid="uid://b6ekmryk32tiw" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/tileset.png" id="1_m7ouy"]
 [ext_resource type="Script" uid="uid://dnjabh8mvfdcb" path="res://vert_world.gd" id="1_n7rix"]

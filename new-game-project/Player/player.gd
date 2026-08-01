@@ -52,7 +52,6 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	
-
 	
 	
 	if Game.playerHP <= 0:
@@ -60,3 +59,7 @@ func _physics_process(delta: float) -> void:
 		Game.playerHP = 1
 		Utils.SaveGame()
 		get_tree().change_scene_to_file("res://main.tscn")
+
+func _process(delta:float) -> void:
+	if position.y > 1000:
+		get_tree().change_scene_to_file("res://vert_world.tscn")
