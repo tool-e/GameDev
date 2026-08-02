@@ -2,6 +2,7 @@ extends Node2D
 
 @export var scene_to_instantiate: PackedScene
 var width = 500
+@onready var player: Node2D = $PLAYER
 
 func _ready():
 	randomize()
