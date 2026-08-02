@@ -65,3 +65,7 @@ func _physics_process(delta: float) -> void:
 		Game.playerHP = 1
 		Utils.SaveGame()
 		get_tree().change_scene_to_file("res://main.tscn")
+
+func _process(delta:float) -> void:
+	if position.y > 1000:
+		get_tree().change_scene_to_file("res://lose.tscn")

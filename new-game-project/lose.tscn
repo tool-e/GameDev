@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cw7nbq1lpk3la"]
+
+[ext_resource type="Script" uid="uid://lyvvri0n8fqr" path="res://lose.gd" id="1_pl8j0"]
+[ext_resource type="PackedScene" uid="uid://b8qwk3o424vbh" path="res://BG.tscn" id="1_rtc1j"]
+
+[node name="lose" type="Node2D" unique_id=1887627871]
+script = ExtResource("1_pl8j0")
+
+[node name="BG" parent="." unique_id=823315618 instance=ExtResource("1_rtc1j")]
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1992595597]
+modulate = Color(0, 0, 0, 1)
+offset_left = 94.0
+offset_top = 209.0
+offset_right = 1078.0
+offset_bottom = 240.0
+text = "YOU LOSE"
+alignment = 1
+editable = false
+
+[node name="Retry" type="Button" parent="." unique_id=388291814]
+offset_left = 426.0
+offset_top = 316.0
+offset_right = 754.0
+offset_bottom = 453.0
+text = "Retry?"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="." unique_id=877305200]
+offset_left = 426.0
+offset_top = 479.0
+offset_right = 754.0
+offset_bottom = 616.0
+tooltip_text = "Exits game"
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
