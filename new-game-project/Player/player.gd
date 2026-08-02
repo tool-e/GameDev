@@ -62,4 +62,4 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta:float) -> void:
 	if position.y > 1000:
-		get_tree().change_scene_to_file("res://vert_world.tscn")
+		get_tree().change_scene_to_file("res://lose.tscn")
