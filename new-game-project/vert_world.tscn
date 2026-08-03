@@ -184,4 +184,4 @@ position = Vector2(2, 2)
 [node name="MOBS" type="Node2D" parent="." unique_id=361904289]
 
 [node name="Frog" parent="MOBS" unique_id=1377682921 instance=ExtResource("7_y5ot6")]
-position = Vector2(-257, -119)
+position = Vector2(-85, -163)

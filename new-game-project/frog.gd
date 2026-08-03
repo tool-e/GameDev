@@ -1,61 +1,84 @@
-extends CharacterBody2D
+class_name Frog extends CharacterBody2D
 
-var SPEED = 300
-var PRECONDITIONS = {
-	'player_highground': false,
-	'platform_overhead': false,
-}
+const FROG_SPEED = 200.0
+var DIRECTION
 
 
+@onready var anime: AnimationPlayer = $AnimationPlayer
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shapecast: ShapeCast2D = $ShapeCast2D
+@onready var player = get_node("../../PLAYER/Player")
 
-@onready var ray_cast = $RayCast2D
-var sweep_speed: float = 2.0
-var sweep_time: float = 0.0
+
+func _ready() -> void:
+	#World.jump.connect(on_jump)
+	
+	shapecast.set_collide_with_areas(true)
+	shapecast.set_collide_with_bodies(false)
+	shapecast.set_collision_mask(1)
+	shapecast.set_enabled(true)
+	shapecast.set_exclude_parent_body(false)
+	shapecast.set_max_results(32)
+	shapecast.set_target_position( Vector2(10, 200) )                
+	
+	
+
+#func on_jump() -> void:
+	#self.velocity.y = Game.JUMP_VELOCITY
+	
+func shapecasting() -> void:
+	if shapecast.is_colliding() == true:
+		DIRECTION = (shapecast.get_collision_point(3) - self.position).normalized()
+		
+
+func RESET() -> void:
+	#print(self.get_global_position())
+	if (self.get_global_position().y - Game.LAST_COORDINATES.y) > 3000:
+		self.velocity = Vector2.ZERO
+		self.set_global_position(Game.LAST_COORDINATES)
+		await get_tree().create_timer(10.0)
+		
+		
 
 								#ACTION STATES
 func CHASE() -> void:
-	get_node("AnimatedSprite2D").play("Jump")
-	var player = get_node("../../PLAYER/Player")
-	var direction = (player.position - self.position).normalized()
-	var speed = 300
+	anime.play("Jump")
 	
-	if direction.x > 0:
-		get_node("AnimatedSprite2D").flip_h = true
+	DIRECTION = (player.position - self.position).normalized()
+	if self.position < player.position and self.is_on_floor():
+		self.velocity.y = Game.JUMP_VELOCITY
+		shapecasting()
+	
+	if DIRECTION.x > 0:
+		anim.flip_h = true
 	else:
-		get_node("AnimatedSprite2D").flip_h = false
+		anim.flip_h = false
 		
-	velocity.x = direction.x * speed 
+	self.velocity.x = self.DIRECTION.x * FROG_SPEED 
 		
-	move_and_slide()
+	
 	
 								#PROCESS
-func _ready() -> void:
-	get_node("AnimatedSprite2D").play("Idle")
+
+func IDLE() -> void:
+	if player.position < self.position and player.is_on_floor():
+		self.velocity.x = move_toward(self.velocity.x, 0, FROG_SPEED)
+		anime.play("Idle")
 	
 func _physics_process(delta: float) -> void:
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
 	CHASE()
-	# Sweep the raycast back and forth using a sine wave
-	sweep_time += delta * sweep_speed
+	IDLE()
+	RESET()
 	
-	# Rotate the RayCast around its local origin
-	ray_cast.rotation = sin(sweep_time) * deg_to_rad(45) # Sweeps a 90-degree arc
-	
-	if ray_cast.is_colliding():
-		var hit_object = ray_cast.get_collider()
-		var hit_point = ray_cast.get_collision_point()
-		#print("Swept and hit: ", hit_object.name)
-		#print(hit_point)
-		
-		if hit_object.name == "Player":
-			velocity.y = Game.JUMP_VELOCITY
-
+	move_and_slide()
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		Game.playerHP -= 3
-		Utils.SaveGame()
+		
 		

@@ -2,8 +2,6 @@ class_name Player extends CharacterBody2D
 
 
 
-const SPEED = 200.0
-
 @onready var BaseState: BaseState = %BaseState
 
 func LogState(state) -> String:
@@ -29,32 +27,15 @@ enum States {
 var curr_state = States.IDLE
 var direction
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#if not is_on_floor():
-		#self.velocity += get_gravity() * delta
 
+func _physics_process(delta: float) -> void:
 	# Handle States
-	direction = Input.get_axis("ui_left", "ui_right")
 	BaseState.RUN()
 	BaseState.IDLE()
 	BaseState.JUMP()
 	BaseState.FALL(delta)
-	
-	
-	#match curr_state:
-		#States.JUMP:
-			##BaseState.JUMP()
-			#self.velocity.y = Game.JUMP_VELOCITY
-			#$AnimationPlayer.play("Jump")
-		#States.FALL:
-			#BaseState.FALL(delta)
-		#States.RUN:
-			#BaseState.RUN()
-		#States.IDLE:
-			#BaseState.IDLE()
 			
-	print(LogState(curr_state))
+	#print(LogState(curr_state))
 	
 	move_and_slide()	
 
@@ -63,5 +44,5 @@ func _physics_process(delta: float) -> void:
 	if Game.playerHP <= 0:
 		queue_free()
 		Game.playerHP = 1
-		Utils.SaveGame()
+		#Utils.SaveGame()
 		get_tree().change_scene_to_file("res://main.tscn")

@@ -5,13 +5,14 @@ class_name BaseState extends Player
 @onready var anime: AnimatedSprite2D = $"../AnimatedSprite2D"
 @onready var Player: Player = $".."
 
-
-
+const PLAYER_SPEED = 300.0
 
 func MOVE() -> void:
 	direction = Input.get_axis("ui_left", "ui_right")
-	anime.flip_h = true if direction == -1 else false #flip character into the direction he's moving
-	Player.velocity.x = direction * SPEED
+	if direction == -1:
+		anime.flip_h = true
+	elif direction == 1: anime.flip_h = false #flip character into the direction he's moving
+	Player.velocity.x = direction * PLAYER_SPEED
 	 
 
 #States the player can be in at any given time
@@ -23,17 +24,22 @@ func RUN() -> void:
 
 func IDLE() -> void:
 	if !direction and Player.is_on_floor(): 
-		Player.velocity.x = move_toward(Player.velocity.x, 0, SPEED)
+		Player.velocity.x = move_toward(Player.velocity.x, 0, PLAYER_SPEED)
 		anim.play("Idle")
 		curr_state = States.IDLE
 #
 func JUMP() -> void:
 	MOVE()
-	if Input.is_action_just_pressed("ui_accept") and Player.is_on_floor(): 
+	if Input.is_action_just_pressed("ui_accept") and Player.is_on_floor():
+		Game.LAST_COORDINATES = Player.get_global_position()
 		Player.velocity.y = Game.JUMP_VELOCITY
 		anim.play("Jump")
 		curr_state = States.JUMP
-		print("test")
+		print(Game.LAST_COORDINATES)
+		#World.jump.emit() 
+	
+	
+	
 	
 func FALL(delta) -> void:
 	#Gravity
