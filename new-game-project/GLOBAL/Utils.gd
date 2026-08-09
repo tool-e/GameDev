@@ -12,10 +12,9 @@ var SAVEFILE = "res://save.bin"
 	#var jstr = JSON.stringify(data)
 	#file.store_line(jstr)
 	#
-#func LoadGame() -> void:
-	#var file = FileAccess.open(SAVEFILE, FileAccess.READ)
-	#if FileAccess.file_exists(SAVEFILE) == true:
-		#var currentline = JSON.parse_string(file.get_line())
-		#if currentline:
-			#Game.GOLD = currentline["GOLD"]
-			#Game.playerHP = currentline["playerHP"]
+func LoadGame() -> void:
+	var file = FileAccess.open(SAVEFILE, FileAccess.READ)
+	if FileAccess.file_exists(SAVEFILE) == true:
+		var currentline = JSON.parse_string(file.get_line())
+		if currentline:
+			Game.playerHP = currentline["playerHP"]

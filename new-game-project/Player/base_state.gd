@@ -35,8 +35,7 @@ func JUMP() -> void:
 		Player.velocity.y = Game.JUMP_VELOCITY
 		anim.play("Jump")
 		curr_state = States.JUMP
-		print(Game.LAST_COORDINATES)
-		#World.jump.emit() 
+		#print(Game.LAST_COORDINATES) 
 	
 	
 	

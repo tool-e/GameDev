@@ -11,8 +11,6 @@ var DIRECTION
 
 
 func _ready() -> void:
-	#World.jump.connect(on_jump)
-	
 	shapecast.set_collide_with_areas(true)
 	shapecast.set_collide_with_bodies(false)
 	shapecast.set_collision_mask(1)
@@ -21,10 +19,6 @@ func _ready() -> void:
 	shapecast.set_max_results(32)
 	shapecast.set_target_position( Vector2(10, 200) )                
 	
-	
-
-#func on_jump() -> void:
-	#self.velocity.y = Game.JUMP_VELOCITY
 	
 func shapecasting() -> void:
 	if shapecast.is_colliding() == true:
@@ -36,9 +30,7 @@ func RESET() -> void:
 	if (self.get_global_position().y - Game.LAST_COORDINATES.y) > 3000:
 		self.velocity = Vector2.ZERO
 		self.set_global_position(Game.LAST_COORDINATES)
-		await get_tree().create_timer(10.0)
-		
-		
+		#get_tree().create_timer(10.0)
 
 								#ACTION STATES
 func CHASE() -> void:
@@ -56,14 +48,14 @@ func CHASE() -> void:
 		
 	self.velocity.x = self.DIRECTION.x * FROG_SPEED 
 		
-	
-	
-								#PROCESS
-
 func IDLE() -> void:
 	if player.position < self.position and player.is_on_floor():
 		self.velocity.x = move_toward(self.velocity.x, 0, FROG_SPEED)
-		anime.play("Idle")
+		anime.play("Idle")	
+
+
+	
+								#PROCESS
 	
 func _physics_process(delta: float) -> void:
 	

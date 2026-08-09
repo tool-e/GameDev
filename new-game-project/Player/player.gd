@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 
 @onready var BaseState: BaseState = %BaseState
 
+
 func LogState(state) -> String:
 	match state:
 		States.JUMP:
@@ -38,15 +39,11 @@ func _physics_process(delta: float) -> void:
 	#print(LogState(curr_state))
 	
 	move_and_slide()	
-
 	
-	#Player Death / Game Over
-	if Game.playerHP <= 0:
-		queue_free()
-		Game.playerHP = 1
-		#Utils.SaveGame()
-		get_tree().change_scene_to_file("res://main.tscn")
+	
+		
 
-func _process(delta:float) -> void:
-	if position.y > 1000:
+func _process(_delta:float) -> void:
+	if position.y > 1000 or Game.playerHP <= 0:
+		queue_free()
 		get_tree().change_scene_to_file("res://lose.tscn")
