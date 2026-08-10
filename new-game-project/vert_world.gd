@@ -11,7 +11,7 @@ func _ready():
 	while y > -3000:
 		var new_platform = scene_to_instantiate.instantiate()
 		var rngesus_plat = scene_to_instantiate.instantiate()
-		var offset = randf_range(-150,150)
+		var offset = randf_range(-125,125)
 		if prev_position == null:
 			new_platform.position = Vector2(randf_range(-width , width),y)
 			prev_position = new_platform.position
