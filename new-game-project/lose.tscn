@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cw7nbq1lpk3la"]
+[gd_scene format=3 uid="uid://tyu05t0lk5li"]
 
 [ext_resource type="Script" uid="uid://lyvvri0n8fqr" path="res://lose.gd" id="1_pl8j0"]
 [ext_resource type="PackedScene" uid="uid://b8qwk3o424vbh" path="res://BG.tscn" id="1_rtc1j"]
@@ -8,7 +8,7 @@ script = ExtResource("1_pl8j0")
 
 [node name="BG" parent="." unique_id=823315618 instance=ExtResource("1_rtc1j")]
 
-[node name="LineEdit" type="LineEdit" parent="." unique_id=1992595597]
+[node name="Lose text" type="LineEdit" parent="." unique_id=1992595597]
 modulate = Color(0, 0, 0, 1)
 offset_left = 94.0
 offset_top = 209.0

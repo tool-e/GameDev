@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cflbvcpxaqpyc"]
+
+[ext_resource type="PackedScene" uid="uid://b8qwk3o424vbh" path="res://BG.tscn" id="1_wy0u7"]
+
+[node name="Progression" type="Node2D" unique_id=1896205732]
+
+[node name="BG" parent="." unique_id=823315618 instance=ExtResource("1_wy0u7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1549555585]
+position = Vector2(680, 274)
