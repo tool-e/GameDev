@@ -144,6 +144,17 @@ sources/0 = SubResource("TileSetAtlasSource_n7rix")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5ot6"]
 bg_color = Color(0, 0.9184968, 0.9337756, 0.6431373)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0.91450024, 0.93, 0.2509804)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.12, 0.12, 0.12, 0.47058824)
+shadow_size = 2
 
 [node name="VertWorld" type="Node2D" unique_id=447647079]
 script = ExtResource("1_n7rix")
@@ -223,10 +234,11 @@ theme_override_constants/margin_bottom = 20
 
 [node name="You Win!" type="Label" parent="Win/ColorRect/PanelContainer/Win" unique_id=369031223]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
 text = "YOU WIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [node name="Play" type="MarginContainer" parent="Win/ColorRect/PanelContainer" unique_id=530818583]
 layout_mode = 2

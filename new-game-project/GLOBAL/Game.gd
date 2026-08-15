@@ -3,7 +3,7 @@ extends Node
 
 
 
-const JUMP_VELOCITY = -1000.0
+const JUMP_VELOCITY = -800.0
 const GRAVITY = 1000
 var playerHP = 1
 

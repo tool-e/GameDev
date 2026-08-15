@@ -250,8 +250,12 @@ libraries/ = SubResource("AnimationLibrary_qwm1u")
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_2qd4t")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=1744329891]
+[node name="ShapeCastOne" type="ShapeCast2D" parent="." unique_id=1744329891]
 shape = SubResource("CircleShape2D_3k64a")
-target_position = Vector2(-1, 170)
+target_position = Vector2(72.34, 171)
+
+[node name="ShapeCastTwo" type="ShapeCast2D" parent="." unique_id=427744547]
+shape = SubResource("CircleShape2D_3k64a")
+target_position = Vector2(0, 199)
 
 [connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
