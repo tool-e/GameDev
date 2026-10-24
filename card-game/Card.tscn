@@ -11,6 +11,8 @@ size = Vector2(64, 80)
 texture = ExtResource("1_dd2wi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=996364282]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=275367499]
+visible = false
 shape = SubResource("RectangleShape2D_bhunq")
