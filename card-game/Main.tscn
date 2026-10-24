@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://cluyc22bda4y5"]
 
+[ext_resource type="Script" uid="uid://c4w78522ip36q" path="res://card_manager.gd" id="1_glv2v"]
+
 [node name="Main" type="Node2D" unique_id=1748418460]
 
-[node name="Brian\'s Cards" type="Node2D" parent="." unique_id=938847220]
+[node name="Card Manager" type="Node2D" parent="." unique_id=975912693]
+script = ExtResource("1_glv2v")
 
-[node name="Master Hand" type="Sprite2D" parent="Brian\'s Cards" unique_id=1798796854]
+[node name="Sharnil\'s Cards" type="Node2D" parent="Card Manager" unique_id=1703783912]
 
-[node name="Sharnil\'s Cards" type="Node2D" parent="." unique_id=1703783912]
+[node name="Beatrice" type="Sprite2D" parent="Card Manager/Sharnil\'s Cards" unique_id=1212940677]
 
-[node name="Beatrice" type="Sprite2D" parent="Sharnil\'s Cards" unique_id=1212940677]
+[node name="Brian\'s Cards" type="Node2D" parent="Card Manager" unique_id=938847220]
+
+[node name="Master Hand" type="Sprite2D" parent="Card Manager/Brian\'s Cards" unique_id=1798796854]
