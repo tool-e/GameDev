@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bcwvek6vlgxli"]
 
 [ext_resource type="Texture2D" uid="uid://djx0crebyc7uh" path="res://blankcard.png" id="1_dd2wi"]
+[ext_resource type="Script" uid="uid://dbpqwxcaju6p6" path="res://Card.gd" id="1_hael8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(64, 80)
 
 [node name="Card" type="Node2D" unique_id=1387835397]
+script = ExtResource("1_hael8")
 
 [node name="Card Image" type="Sprite2D" parent="." unique_id=755954781]
 texture = ExtResource("1_dd2wi")
@@ -17,9 +19,5 @@ visible = false
 visible = false
 shape = SubResource("RectangleShape2D_bhunq")
 
-[node name="Label" type="Label" parent="." unique_id=487705101]
-offset_left = -26.0
-offset_top = -39.0
-offset_right = 26.0
-offset_bottom = -16.0
-text = "bingus"
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

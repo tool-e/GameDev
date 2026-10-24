@@ -10,6 +10,16 @@ func _input(event):
 		else:
 			print("Left click released")
 
+func connect_card_signals(card):
+	card.connect("mouse_on", mouse_on_card)
+	card.connect("mouse_off", mouse_off_card)
+
+func mouse_on_card(card):
+	print("mouse on")
+
+func mouse_off_card(card):
+	print("mouse off")
+
 func raycast_check_for_card():
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()
