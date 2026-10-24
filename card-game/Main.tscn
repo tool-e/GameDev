@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cluyc22bda4y5"]
 
 [ext_resource type="Script" uid="uid://c4w78522ip36q" path="res://card_manager.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bcwvek6vlgxli" path="res://Card.tscn" id="2_uu6xs"]
 
 [node name="Main" type="Node2D" unique_id=1748418460]
 
@@ -13,4 +14,4 @@ script = ExtResource("1_glv2v")
 
 [node name="Brian\'s Cards" type="Node2D" parent="Card Manager" unique_id=938847220]
 
-[node name="Master Hand" type="Sprite2D" parent="Card Manager/Brian\'s Cards" unique_id=1798796854]
+[node name="Master Hand" parent="Card Manager/Brian\'s Cards" unique_id=1387835397 instance=ExtResource("2_uu6xs")]
