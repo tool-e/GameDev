@@ -8,6 +8,7 @@ size = Vector2(64, 80)
 [node name="Card" type="Node2D" unique_id=1387835397]
 
 [node name="Card Image" type="Sprite2D" parent="." unique_id=755954781]
+position = Vector2(224, 107)
 texture = ExtResource("1_dd2wi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=996364282]
