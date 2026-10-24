@@ -65,8 +65,8 @@ func CHASE() -> void:
 		
 func IDLE() -> void:
 	if player.position.y > self.position.y and player.is_on_floor() and self.is_on_floor():
-		print("player ", player.position)
-		print("frog ", self.position)
+		#print("player ", player.position)
+		#print("frog ", self.position)
 		self.velocity.x = move_toward(self.velocity.x, 0, FROG_SPEED)
 		anime.play("Idle")	
 
